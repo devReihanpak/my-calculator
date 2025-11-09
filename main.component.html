@@ -1,27 +1,17 @@
-<div class="calculator">
-    <input type="text" [value]="adad" readonly><br>
-    <div class="button">
-        <br>
-        <button (click)="apendadad('1')">1</button>
-        <button (click)="apendadad('2')">2</button>
-        <button (click)="apendadad('3')">3</button>
-        <button (click)="apendadad('+')">+</button>
-        <br>
-        <button (click)="apendadad('4')">4</button>
-        <button (click)="apendadad('5')">5</button>
-        <button (click)="apendadad('6')">6</button>
-        <button (click)="apendadad('-')">-</button>
-        <br>
-        <button (click)="apendadad('7')">7</button>
-        <button (click)="apendadad('8')">8</button>
-        <button (click)="apendadad('9')">9</button>
-        <button (click)="apendadad('*')">*</button>
-        <br>
-        <button (click)="apendadad('0')">0</button>
-        <button (click)="clear()">c</button>
-        <button (click)="calculate()">=</button>
-        <button (click)="apendadad('/')">/</button>
-    </div>
-    
-</div>
 
+<div class="container">
+  <button (click)="openForm()">باز کردن فرم</button>
+
+<app-form *ngIf="showForm" (close)="closeForm()" (save)="saveFormData($event)"></app-form>
+
+<!-- ورودی جستجو -->
+  <div class="search-area">
+    <label for="search">جستجو بر اساس نام:</label>
+    <input id="search" type="text" [(ngModel)]="searchText" placeholder="جستجو...">
+  </div>
+
+  <!-- نمایش درصد تطابق -->
+  <div *ngIf="searchText">
+    <p>درصد تطابق: {{ Match(searchText) }}%</p>
+  </div>
+</div>
